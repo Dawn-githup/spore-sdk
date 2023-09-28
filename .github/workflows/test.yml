@@ -16,10 +16,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Set shell
+        run: echo ::set-env name=SHELL::/bin/bash
+        shell: bash
+
       - name: Install pnpm
         run: |
           curl -fsSL https://get.pnpm.io/install.sh | sh
-          source ~/.bashrc
         if: success()
 
       - name: Setup Node.js
@@ -32,3 +35,4 @@ jobs:
 
       - name: Run Vitest tests
         run: pnpm test
+
