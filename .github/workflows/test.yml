@@ -1,10 +1,10 @@
-name: Vitest Test
+name: Your Workflow Name
 
 on:
   push:
     branches:
       - main
-  workflow_dispatch: {}
+  workflow_dispatch:
   schedule:
     - cron: '0 22 * * *' # 每天早上6点触发 (UTC时间)
 
@@ -21,16 +21,14 @@ jobs:
         with:
           node-version: 14
 
-      - name: Setup pnpm
-        run: |
-          export PNPM_HOME="/home/runner/.local/share/pnpm"
-          export PATH="$PNPM_HOME:$PATH"
-          source /home/runner/.bashrc
-
-      - name: Install dependencies
+      - name: Install pnpm
         run: |
           curl -fsSL https://get.pnpm.io/install.sh | sh
-          pnpm install
+          source /home/runner/.bashrc
 
-      - name: Run Vitest tests
-        run: npm test
+      - name: Install project dependencies
+        run: pnpm install
+
+      - name: Run tests
+        run: pnpm test
+
