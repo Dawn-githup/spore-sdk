@@ -12,9 +12,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    env:
-      SHELL: /bin/bash
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -24,10 +21,15 @@ jobs:
         with:
           node-version: 14
 
+      - name: Setup pnpm
+        run: |
+          export PNPM_HOME="/home/runner/.local/share/pnpm"
+          export PATH="$PNPM_HOME:$PATH"
+          source /home/runner/.bashrc
+
       - name: Install dependencies
         run: |
           curl -fsSL https://get.pnpm.io/install.sh | sh
-          export PATH="/usr/local/bin:$PATH" # 修改为您的 pnpm 安装路径
           pnpm install
 
       - name: Run Vitest tests
