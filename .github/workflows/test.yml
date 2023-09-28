@@ -21,6 +21,9 @@ jobs:
         with:
           node-version: 14
 
+      - name: Set up bash shell
+        run: echo "::set-env name=SHELL::/bin/bash"
+
       - name: Install pnpm
         run: |
           curl -fsSL https://get.pnpm.io/install.sh | sh
@@ -31,4 +34,3 @@ jobs:
 
       - name: Run tests
         run: pnpm test
-
