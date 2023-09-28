@@ -6,11 +6,14 @@ on:
       - main
   workflow_dispatch: {}
   schedule:
-    - cron: '0 22 * * *'
+    - cron: '0 22 * * *' # 每天早上6点触发 (UTC时间)
 
 jobs:
   test:
     runs-on: ubuntu-latest
+
+    env:
+      SHELL: /bin/bash
 
     steps:
       - name: Checkout code
@@ -24,7 +27,7 @@ jobs:
       - name: Install dependencies
         run: |
           curl -fsSL https://get.pnpm.io/install.sh | sh
-          export PATH="/usr/local/bin:$PATH"
+          export PATH="/usr/local/bin:$PATH" # 修改为您的 pnpm 安装路径
           pnpm install
 
       - name: Run Vitest tests
