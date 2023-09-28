@@ -13,26 +13,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: 检查代码
         uses: actions/checkout@v2
 
-      - name: Set shell
-        run: echo ::set-env name=SHELL::/bin/bash
-        shell: bash
+      - name: 设置SHELL环境变量
+        run: echo "SHELL=$(echo $SHELL)" >> $GITHUB_ENV
 
-      - name: Install pnpm
+      - name: 安装 pnpm
         run: |
           curl -fsSL https://get.pnpm.io/install.sh | sh
         if: success()
 
-      - name: Setup Node.js
+      - name: 设置 Node.js
         uses: actions/setup-node@v2
         with:
           node-version: 14
 
-      - name: Install dependencies
+      - name: 安装依赖
         run: pnpm install
 
-      - name: Run Vitest tests
+      - name: 运行 Vitest 测试
         run: pnpm test
+
+
 
