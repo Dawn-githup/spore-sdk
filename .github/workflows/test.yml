@@ -16,10 +16,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set shell
-        run: echo ::set-env name=SHELL::/bin/bash
-        shell: bash
-
       - name: Install pnpm
         run: |
           curl -fsSL https://get.pnpm.io/install.sh | sh
@@ -30,9 +26,13 @@ jobs:
         with:
           node-version: 14
 
+      - name: Create Environment File
+        run: echo "SHELL=/bin/bash" >> $GITHUB_ENV
+
       - name: Install dependencies
         run: pnpm install
 
       - name: Run Vitest tests
         run: pnpm test
+
 
