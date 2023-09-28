@@ -58,7 +58,7 @@ describe('Spore', function () {
     const { CHARLIE, ALICE } = TESTNET_ACCOUNTS;
 
     const outPoint: OutPoint = {
-      txHash: '0x76cede56c91f8531df0e3084b3127686c485d08ad8e86ea948417094f3f023f9',
+      txHash: '0x2d73612e1a1e84c1e1b41a36277c9596565dd3a091c851deab68595d984e9b6b',
       index: '0x0',
     };
 
@@ -85,7 +85,7 @@ describe('Spore', function () {
     const { CHARLIE, ALICE } = TESTNET_ACCOUNTS;
 
     const outPoint: OutPoint = {
-      txHash: '0x76cede56c91f8531df0e3084b3127686c485d08ad8e86ea948417094f3f023f9',
+      txHash: '0x83337b4a9caeb38f9007d4a09baed13a8afe1a5bc3d2cae292d108646fb7caf8',
       index: '0x0',
     };
 

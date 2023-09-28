@@ -34,7 +34,7 @@ describe('Cluster', function () {
     const { CHARLIE, ALICE } = TESTNET_ACCOUNTS;
 
     const outPoint: OutPoint = {
-      txHash: '0xb1f94d7d8e8441bfdf1fc76639d12f4c3c391b8c8a18ed558e299674095290c3',
+      txHash: '0xa9d76d2e1062b6b382df11b77d1b8d5b2dd2503df755e25c01fa9187ec83bd54',
       index: '0x0',
     };
 

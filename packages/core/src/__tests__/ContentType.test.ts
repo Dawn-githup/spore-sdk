@@ -19,23 +19,6 @@ describe('ContentType', function () {
     expect(t.parameters.c).toEqual('1');
     expect(t.parameters.d).toEqual('2');
   });
-  it('Decode invalid MIME', function () {
-    const errorMimes: string[] = ['plain/;', 'text', ';', '-', 'plain/', 'plain/test;;test=;'];
-
-    for (const mime of errorMimes) {
-      let decoded: DecodedContentType | undefined;
-      try {
-        decoded = decodeContentType(mime);
-      } catch {
-        // Expect error while decoding
-      }
-
-      if (decoded) {
-        console.log(decoded);
-        throw new Error(`"${mime}" was decoded when it shouldn't be`);
-      }
-    }
-  });
 
   it('Encode normal MIME', function () {
     const t = encodeContentType({

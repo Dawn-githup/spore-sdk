@@ -32,7 +32,7 @@ describe('Lumos', function () {
 
     const cell = await rpc.getLiveCell(
       {
-        txHash: '0x6d3c79d3e6d0ea6b1d779b98c6572ac594205fb308d5d021b58d8d51a131b7f0',
+        txHash: '0xafef83c15e8b4a891838c5f93ac7daf3f8aef914b218d6c2556719284f58c53a',
         index: '0x0',
       },
       true,
