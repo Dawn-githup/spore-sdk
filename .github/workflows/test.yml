@@ -13,24 +13,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 检查代码
+      - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: 设置SHELL环境变量
-        run: echo "SHELL=$(echo $SHELL)" >> $GITHUB_ENV
-
-      - name: 安装 pnpm
-        run: |
-          curl -fsSL https://get.pnpm.io/install.sh | sh
-        if: success()
-
-      - name: 设置 Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
           node-version: 14
 
-      - name: 安装依赖
-        run: pnpm install
+      - name: Install dependencies
+        run: |
+          curl -fsSL https://get.pnpm.io/install.sh | sh
+          export PATH="/usr/local/bin:$PATH"
+          pnpm install
 
-      - name: 运行 Vitest 测试
-        run: pnpm test
+      - name: Run Vitest tests
+        run: npm test
