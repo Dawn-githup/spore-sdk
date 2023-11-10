@@ -1,5 +1,18 @@
 # @spore-sdk/core
 
+## 0.1.0-beta.14
+
+### Patch Changes
+
+- db8f7d0: Fix a turbo cache bug, now should clear turbo cache before releasing packages
+
+## 0.1.0-beta.13
+
+### Patch Changes
+
+- bc37376: Rename term from "destroy" to "melt", etc. "meltSpore"
+- 9f1d792: Rename Joint APIs, from "getXCellByY" to "getXByY", and from "injectXIds" to "injectNewXIds"
+
 ## 0.1.0-beta.12
 
 ### Patch Changes
