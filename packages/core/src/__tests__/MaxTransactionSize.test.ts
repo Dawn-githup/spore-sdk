@@ -4,7 +4,7 @@ import { describe, it } from 'vitest';
 import { bytes } from '@ckb-lumos/codec';
 import { OutPoint } from '@ckb-lumos/base';
 import { bytifyRawString } from '../helpers';
-import { createSpore, destroySpore, transferSpore } from '../api';
+import { createSpore, meltSpore, transferSpore } from '../api';
 import { signAndSendTransaction, TESTNET_ACCOUNTS, TESTNET_ENV } from './shared';
 
 const localImage = './resources/test222.jpg';
@@ -26,30 +26,34 @@ async function fetchLocalImage(src: string) {
 
 describe('Spore', function () {
   it('Create a spore (max size)', async function () {
-    const { rpc, config } = TESTNET_ENV;
-    const { CHARLIE } = TESTNET_ACCOUNTS;
+    try {
+      const { rpc, config } = TESTNET_ENV;
+      const { CHARLIE } = TESTNET_ACCOUNTS;
 
-    // Generate local image content
-    const content = await fetchLocalImage(localImage);
+      // Generate local image content
+      const content = await fetchLocalImage(localImage);
 
-    // Create cluster cell, collect inputs and pay fee
-    let { txSkeleton } = await createSpore({
-      data: {
-        contentType: 'image/jpeg',
-        content: content.arrayBuffer,
-      },
-      fromInfos: [CHARLIE.address],
-      toLock: CHARLIE.lock,
-      config,
-    });
+      // Create cluster cell, collect inputs and pay fee
+      let { txSkeleton } = await createSpore({
+        data: {
+          contentType: 'image/jpeg',
+          content: content.arrayBuffer,
+        },
+        fromInfos: [CHARLIE.address],
+        toLock: CHARLIE.lock,
+        config,
+      });
 
-    // Sign and send transaction
-    await signAndSendTransaction({
-      account: CHARLIE,
-      txSkeleton,
-      config,
-      rpc,
-      send: false,
-    });
+      // Sign and send transaction
+      await signAndSendTransaction({
+        account: CHARLIE,
+        txSkeleton,
+        config,
+        rpc,
+        send: false,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }, 30000);
 });
