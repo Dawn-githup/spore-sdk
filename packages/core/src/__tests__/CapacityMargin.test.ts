@@ -4,7 +4,7 @@ import { describe, it } from 'vitest';
 import { bytes } from '@ckb-lumos/codec';
 import { OutPoint } from '@ckb-lumos/base';
 import { bytifyRawString } from '../helpers';
-import { createSpore, destroySpore, transferSpore } from '../api';
+import { createSpore, transferSpore } from '../api';
 import { signAndSendTransaction, TESTNET_ACCOUNTS, TESTNET_ENV } from './shared';
 import { BI } from '@ckb-lumos/lumos';
 
